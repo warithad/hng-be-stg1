@@ -24,11 +24,15 @@ app.get('/api/hello', async (req, res)=>{
 
         const {city, temp} = await getWeather(ip)
         const greeting = `Hello, ${visitor_name}!, the temperature is ${temp} degrees Celcius in ${city}`
-        
+       
+        if (ip.includes(',')) {
+            ip = ip.split(',')[0].trim();
+        }
+    
         if(ip == '::1'){
             ip = '127.0.0.1'
         }
-        
+
         res.json({
             client_ip: ip,
             location: city,
