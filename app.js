@@ -24,19 +24,18 @@ app.get('/api/hello', async (req, res)=>{
         const {city, temp} = await getWeather(client_ip)
 
         const greeting = `Hello, ${visitor_name}!, the temperature is ${temp} degrees Celcius in ${city}`
-        console.log(greeting)
+
         res.json({
             client_ip,
             location: city,
             greeting
         })
     }catch(error){
-        console.error('Error occurred:', error);
         res.status(500).json({
           error: 'An error occurred while processing your request.'
         });
     }   
-})
+})  
 
 app.listen(port, () =>{
     console.log(`App listening on port ${port}`)
