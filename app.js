@@ -4,11 +4,6 @@ const app = express()
 const port = process.env.PORT || 3000
 const axios = require('axios')
 
-if (process.env.NODE_ENV === 'development') {
-    require('dotenv').config({ path: '.env.development' });
-  } else if (process.env.NODE_ENV === 'production') {
-    require('dotenv').config({ path: '.env.production' });
-}
 
 async function getWeather(ip){
     try {
